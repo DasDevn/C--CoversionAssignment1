@@ -25,6 +25,9 @@ int main() {
             }
         }
 
+    stringConversion.insert(0, "<PRE>\n");
+
+    stringConversion += "\n</PRE>";
         std::cout << stringConversion << std::endl;
 
         return 0;
