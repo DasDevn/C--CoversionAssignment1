@@ -3,45 +3,44 @@
 #include <string>
 using namespace std;
 
-void demoOpenPrint();
-void demoOpenWrite();
+void demoOpenPrint()
+{
+    string line;
+    ifstream myFileIn;
+    //you may use either .fail() or the .is_open() method
+    //of the file stream object
+    myFileIn.open("myFileIn.txt");
+    if(myFileIn.is_open())//or if(myFileIn.fail
+    {
+        cout << "File Open" << endl;
+        while(!myFileIn.eof()){
+            getline(myFileIn,line);
+            cout << line<<endl;
+        }
+        myFileIn.close();
+        cout<<"File closed"<<endl;
+    }else{
+        cout << "Input file failed to open"<< endl;
+    }
+}
+
+void demoOpenWrite(const string& fileName) {
+    ofstream myFileOut;
+
+    myFileOut.open(fileName, ios::app);
+
+    if (!myFileOut.fail()) {
+        myFileOut << "stuff" << " and more stuff" << endl;
+        myFileOut.close();
+        cout << "File Closed" << endl;
+    } else {
+        cout << "Output File failed to open" << endl;
+    }
+}
 
 int main() {
 
-    void demoOpenPrint()
-    {
-        string line;
-        ifstream myFileIn;
-        //you may use either .fail() or the .is_open() method
-        //of the file stream object
-        myFileIn.open("myFileIn.txt");
-        if(myFileIn.is_open())//or if(myFileIn.fail
-        {
-            cout << "File Open" << endl;
-            while(!myFileIn.eof()){
-                getline(myFileIn,line);
-                cout << line<<endl;
-            }
-            myFileIn.close();
-            cout<<"File closed"<<endl;
-        }else{
-            cout << "Input file failed to open"<< endl;
-        }
-    }
 
-    void demoOpenWrite(const string& fileName) {
-        ofstream myFileOut;
-
-        myFileOut.open(fileName, ios::app);
-
-        if (!myFileOut.fail()) {
-            myFileOut << "stuff" << " and more stuff" << endl;
-            myFileOut.close();
-            cout << "File Closed" << endl;
-        } else {
-            cout << "Output File failed to open" << endl;
-        }
-    }
 
     string inputFileLocation;
 
