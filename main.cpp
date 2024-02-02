@@ -3,18 +3,20 @@
 #include <string>
 using namespace std;
 
-void demoOpenCloseStreams (string);
+void demoOpenCloseStreams (string, string);
 string getFileName();
 string getSaveLocation();
 
 int main() {
 
     string stringConversion = "C:\\C++\\Assignment1-Conversion\\cmake-build-debug\\output.cpp";
-    demoOpenCloseStreams (stringConversion);
+    string inputFile = getFileName();
+    string outputFile = getSaveLocation();
+    demoOpenCloseStreams(inputFile, outputFile);
 
 
 }
-void demoOpenCloseStreams(string inputfile) {
+void demoOpenCloseStreams(string inputfile, string outputfile) {
     cout << "Files Open" << endl;
 
     // Declare stream objects
@@ -23,7 +25,7 @@ void demoOpenCloseStreams(string inputfile) {
 
     // Connect files to stream objects
     inStream.open(inputfile);
-    outStream.open("happy.html");
+    outStream.open(outputfile + ".html");
 
     string line;
     string stringConversion;  // Assuming you have a string to store the entire content
