@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <regex>
 using namespace std;
 
 void demoOpenCloseStreams (string, string);
@@ -25,7 +26,7 @@ void demoOpenCloseStreams(string inputfile, string outputfile) {
 
     // Connect files to stream objects
     inStream.open(inputfile);
-    outStream.open(outputfile + ".html");
+    outStream.open(outputfile);
 
     string line;
     string stringConversion;  // Assuming you have a string to store the entire content
@@ -62,18 +63,35 @@ void demoOpenCloseStreams(string inputfile, string outputfile) {
     outStream.close();
 }
 
+//https://stackoverflow.com/questions/24702677/regular-expression-to-match-a-valid-absolute-windows-directory-containing-spaces
+//https://regex101.com/
+bool isValidInput(const string& input) {
+    // Define the regex pattern
+    regex pattern(R"(^[a-zA-Z]:\\.*\.(cpp|html)$)");
+    // Test the input against the regex pattern
+    return regex_match(input, pattern);
+}
 // Function to get user input for file name
 string getFileName() {
     string fileName;
-    cout << "What .cpp file would you like to turn into an html file? ";
-    getline(cin, fileName);
+    do {
+        cout << "What .cpp file would you like to turn into an html file? ";
+        getline(cin, fileName);
+        if (!isValidInput(fileName)) {
+            cout << "Invalid file name. Please enter a valid .cpp or .html file path.\n";
+        }
+    } while (!isValidInput(fileName));
     return fileName;
 }
-
-// Function to get user input for save location
+//function to save file
 string getSaveLocation() {
     string saveLocation;
-    cout << "Where would you like to save the html file? ";
-    getline(cin, saveLocation);
+    do {
+        cout << "Where would you like to save the html file? ";
+        getline(cin, saveLocation);
+        if (!isValidInput(saveLocation)) {
+            cout << "Invalid save location. Please enter a valid directory path.\n";
+        }
+    } while (!isValidInput(saveLocation));
     return saveLocation;
 }
