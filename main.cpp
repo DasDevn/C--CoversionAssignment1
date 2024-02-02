@@ -4,6 +4,8 @@
 using namespace std;
 
 void demoOpenCloseStreams (string);
+string getFileName();
+string getSaveLocation();
 
 int main() {
 
@@ -56,4 +58,20 @@ void demoOpenCloseStreams(string inputfile) {
 
     inStream.close();
     outStream.close();
+}
+
+// Function to get user input for file name
+string getFileName() {
+    string fileName;
+    cout << "What .cpp file would you like to turn into an html file? ";
+    getline(cin, fileName);
+    return fileName;
+}
+
+// Function to get user input for save location
+string getSaveLocation() {
+    string saveLocation;
+    cout << "Where would you like to save the html file? ";
+    getline(cin, saveLocation);
+    return saveLocation;
 }
