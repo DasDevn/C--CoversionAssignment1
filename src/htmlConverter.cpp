@@ -86,10 +86,12 @@ string getFileName() {
             cout << "Exiting the program.\n";
             exit(0);
         }
-        if (!isValidInput(fileName)) {
-            cout << "Invalid file name.\n\n";
+        //added incase file does not exist
+        if (!isValidInput(fileName) || !ifstream(fileName)) {
+            cout << "Invalid file name or file does not exist.\n\n";
+            fileName.clear();  // Clear the input to ask for it again
         }
-    } while (!isValidInput(fileName));
+    } while (fileName.empty());
     return fileName;
 } //
 
