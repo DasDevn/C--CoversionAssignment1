@@ -91,7 +91,7 @@ string getFileName() {
         }
     } while (!isValidInput(fileName));
     return fileName;
-}
+} //
 //Function to save file
 string getSaveLocation() {
     string saveLocation;
@@ -108,3 +108,4 @@ string getSaveLocation() {
     } while (!isValidInput(saveLocation));
     return saveLocation;
 }
+
