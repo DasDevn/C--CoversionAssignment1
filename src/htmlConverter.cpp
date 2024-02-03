@@ -8,7 +8,7 @@ using namespace std;
 //CLion recommended making the parameters const and references, working fine,
 //researched it a bit, somewhat understand why, more research needed
 void demoOpenCloseStreams(const string& inputFile, const string& outputFile) {
-    cout << "Files Open" << endl;
+    cout << "File Converted and Saved" << endl;
 
     // Declare stream objects
     ifstream inStream;
@@ -44,7 +44,7 @@ void demoOpenCloseStreams(const string& inputFile, const string& outputFile) {
     stringConversion.insert(0, "<PRE>\n");
 
     // Append "\n</PRE>" at the end
-    stringConversion += "\n</PRE>";
+    stringConversion += "</PRE>";
 
     // Write the modified content to the output file
     outStream << stringConversion << endl;
@@ -66,14 +66,14 @@ string getFileName() {
     string fileName;
     //do while loop continues to execute until a proper name is enter or the person quits
     do {
-        cout << "What .cpp file would you like to turn into an html file? ";
+        cout << "Please enter the complete path of the .cpp file you want to convert to an HTML file or enter 'quit' to exit program. \n (e.g. C:\\Path\\to\\your\\file.cpp): \n";
         getline(cin, fileName);
         if (fileName == "quit") {
             cout << "Exiting the program.\n";
             exit(0);
         }
         if (!isValidInput(fileName)) {
-            cout << "Invalid file name. Please enter a valid .cpp or .html file path.\n";
+            cout << "Invalid file name.\n\n";
         }
     } while (!isValidInput(fileName));
     return fileName;
@@ -82,14 +82,14 @@ string getFileName() {
 string getSaveLocation() {
     string saveLocation;
     do {
-        cout << "Where would you like to save the html file? ";
+        cout << "\nPlease enter the complete path where you'd like to save the converted (.cpp to .html) file or enter 'quit' to exit program \n Don't forget to add a name for the file at the end of the path followed with .html! \n (e.g. C:\\Path\\to\\your\\file\\fileName.html): \n";
         getline(cin, saveLocation);
         if (saveLocation == "quit") {
             cout << "Exiting the program.\n";
             exit(0);
         }
         if (!isValidInput(saveLocation)) {
-            cout << "Invalid save location. Please enter a valid directory path.\n";
+            cout << "Invalid save location.\n\n";
         }
     } while (!isValidInput(saveLocation));
     return saveLocation;
