@@ -64,9 +64,14 @@ bool isValidInput(const string& input) {
 // Function to get user input for file name
 string getFileName() {
     string fileName;
+    //do while loop continues to execute until a proper name is enter or the person quits
     do {
         cout << "What .cpp file would you like to turn into an html file? ";
         getline(cin, fileName);
+        if (fileName == "quit") {
+            cout << "Exiting the program.\n";
+            exit(0);
+        }
         if (!isValidInput(fileName)) {
             cout << "Invalid file name. Please enter a valid .cpp or .html file path.\n";
         }
@@ -79,6 +84,10 @@ string getSaveLocation() {
     do {
         cout << "Where would you like to save the html file? ";
         getline(cin, saveLocation);
+        if (saveLocation == "quit") {
+            cout << "Exiting the program.\n";
+            exit(0);
+        }
         if (!isValidInput(saveLocation)) {
             cout << "Invalid save location. Please enter a valid directory path.\n";
         }
