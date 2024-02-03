@@ -2,22 +2,12 @@
 #include <fstream>
 #include <string>
 #include <regex>
+#include "../inc/htmlConverter.h"
 using namespace std;
 
-void demoOpenCloseStreams (string, string);
-string getFileName();
-string getSaveLocation();
-
-int main() {
-
-    string stringConversion = "C:\\C++\\Assignment1-Conversion\\cmake-build-debug\\output.cpp";
-    string inputFile = getFileName();
-    string outputFile = getSaveLocation();
-    demoOpenCloseStreams(inputFile, outputFile);
-
-
-}
-void demoOpenCloseStreams(string inputfile, string outputfile) {
+//CLion recommended making the parameters const and references, working fine,
+//researched it a bit, somewhat understand why, more research needed
+void demoOpenCloseStreams(const string& inputFile, const string& outputFile) {
     cout << "Files Open" << endl;
 
     // Declare stream objects
@@ -25,8 +15,8 @@ void demoOpenCloseStreams(string inputfile, string outputfile) {
     ofstream outStream;
 
     // Connect files to stream objects
-    inStream.open(inputfile);
-    outStream.open(outputfile);
+    inStream.open(inputFile);
+    outStream.open(outputFile);
 
     string line;
     string stringConversion;  // Assuming you have a string to store the entire content

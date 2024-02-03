@@ -49,14 +49,14 @@ cmake_ninja_workdir = C$:/C++/Assignment1-Conversion/cmake-build-debug/
 
 build cmake_object_order_depends_target_Assignment1_Conversion: phony || CMakeFiles/Assignment1_Conversion.dir
 
-build CMakeFiles/Assignment1_Conversion.dir/main.cpp.obj: CXX_COMPILER__Assignment1_Conversion_unscanned_Debug C$:/C++/Assignment1-Conversion/main.cpp || cmake_object_order_depends_target_Assignment1_Conversion
-  DEP_FILE = CMakeFiles\Assignment1_Conversion.dir\main.cpp.obj.d
+build CMakeFiles/Assignment1_Conversion.dir/src/main.cpp.obj: CXX_COMPILER__Assignment1_Conversion_unscanned_Debug C$:/C++/Assignment1-Conversion/src/main.cpp || cmake_object_order_depends_target_Assignment1_Conversion
+  DEP_FILE = CMakeFiles\Assignment1_Conversion.dir\src\main.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Assignment1_Conversion.dir
-  OBJECT_FILE_DIR = CMakeFiles\Assignment1_Conversion.dir
+  OBJECT_FILE_DIR = CMakeFiles\Assignment1_Conversion.dir\src
 
-build CMakeFiles/Assignment1_Conversion.dir/src/assignmentOneSourceFile.cpp.obj: CXX_COMPILER__Assignment1_Conversion_unscanned_Debug C$:/C++/Assignment1-Conversion/src/assignmentOneSourceFile.cpp || cmake_object_order_depends_target_Assignment1_Conversion
-  DEP_FILE = CMakeFiles\Assignment1_Conversion.dir\src\assignmentOneSourceFile.cpp.obj.d
+build CMakeFiles/Assignment1_Conversion.dir/src/htmlConverter.cpp.obj: CXX_COMPILER__Assignment1_Conversion_unscanned_Debug C$:/C++/Assignment1-Conversion/src/htmlConverter.cpp || cmake_object_order_depends_target_Assignment1_Conversion
+  DEP_FILE = CMakeFiles\Assignment1_Conversion.dir\src\htmlConverter.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Assignment1_Conversion.dir
   OBJECT_FILE_DIR = CMakeFiles\Assignment1_Conversion.dir\src
@@ -69,7 +69,7 @@ build CMakeFiles/Assignment1_Conversion.dir/src/assignmentOneSourceFile.cpp.obj:
 #############################################
 # Link the executable Assignment1_Conversion.exe
 
-build Assignment1_Conversion.exe: CXX_EXECUTABLE_LINKER__Assignment1_Conversion_Debug CMakeFiles/Assignment1_Conversion.dir/main.cpp.obj CMakeFiles/Assignment1_Conversion.dir/src/assignmentOneSourceFile.cpp.obj
+build Assignment1_Conversion.exe: CXX_EXECUTABLE_LINKER__Assignment1_Conversion_Debug CMakeFiles/Assignment1_Conversion.dir/src/main.cpp.obj CMakeFiles/Assignment1_Conversion.dir/src/htmlConverter.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Assignment1_Conversion.dir
