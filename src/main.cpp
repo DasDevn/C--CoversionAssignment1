@@ -12,7 +12,7 @@ int main() {
         string outputFile = getSaveLocation();
         demoOpenCloseStreams(inputFile, outputFile);
     } catch (const exception& e) {
-        cout << "Error: " << e.what() ;
+        cout << "Error: " << e.what() << endl ;
         return 1;
     }
     return 0;

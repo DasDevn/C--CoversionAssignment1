@@ -21,10 +21,10 @@ void demoOpenCloseStreams(const string& inputFile, const string& outputFile) {
         inStream.open(inputFile);
         outStream.open(outputFile);
 
+        //Declare variables to be used
         string line;
-        string stringConversion;  // Assuming you have a string to store the entire content
+        string stringConversion;
 
-        // ... Read the entire content into stringConversion ...
 
         // Replace "<" with "&lt;" and ">" with "&gt;" in each line
         while (getline(inStream, line)) {
@@ -35,7 +35,7 @@ void demoOpenCloseStreams(const string& inputFile, const string& outputFile) {
         for (int i = 0; i < stringConversion.length(); ++i) {
             if (stringConversion[i] == '<') {
                 stringConversion.replace(i, 1, "&lt;");
-                // add 3 to i to go over what we just replaced
+                // Add 3 to i to go over what we just replaced
                 i += 3;
             } else if (stringConversion[i] == '>') {
                 stringConversion.replace(i, 1, "&gt;");
@@ -46,7 +46,7 @@ void demoOpenCloseStreams(const string& inputFile, const string& outputFile) {
         // Insert "<PRE>\n" at the beginning
         stringConversion.insert(0, "<PRE>\n");
 
-        // Append "\n</PRE>" at the end
+        // Add "\n</PRE>" at the end
         stringConversion += "</PRE>";
 
         // Write the modified content to the output file
@@ -56,14 +56,25 @@ void demoOpenCloseStreams(const string& inputFile, const string& outputFile) {
     }
 }
 
+//Exception #3 - exception library error for regex
 //https://stackoverflow.com/questions/24702677/regular-expression-to-match-a-valid-absolute-windows-directory-containing-spaces
 //https://regex101.com/
+//https://en.cppreference.com/w/cpp/error/runtime_error
+//https://en.cppreference.com/w/cpp/regex/regex_error
 bool isValidInput(const string& input) {
-    // Define the regex pattern
-    regex pattern(R"(^[a-zA-Z]:\\.*\.(cpp|html)$)");
-    // Test the input against the regex pattern
-    return regex_match(input, pattern);
+    try {
+        // Define the regex pattern
+        regex pattern(R"(^[a-zA-Z]:\\.*\.(cpp|html)$)");
+        // Test input against the regex pattern
+        return regex_match(input, pattern);
+    } catch (const regex_error& e) {
+        // Handle regex error
+        cout << "Regex error: " << e.what() << endl;
+        return false;
+    }
 }
+
+
 // Function to get user input for file name
 string getFileName() {
     string fileName;
@@ -81,7 +92,7 @@ string getFileName() {
     } while (!isValidInput(fileName));
     return fileName;
 }
-//function to save file
+//Function to save file
 string getSaveLocation() {
     string saveLocation;
     do {
